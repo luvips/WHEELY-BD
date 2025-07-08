@@ -1,0 +1,47 @@
+plugins {
+    id 'application'
+    id 'java'
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+
+group = 'com.wheely'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Javalin para el servidor web y APIs REST
+    implementation("io.javalin:javalin-bundle:6.6.0")
+
+    // Logging
+    implementation("org.slf4j:slf4j-simple:2.0.16")
+
+    // Base de datos MySQL - versión 9.3 como tienes configurado
+    implementation("com.mysql:mysql-connector-j:9.3.0")
+
+    // Pool de conexiones para mejor rendimiento
+    implementation("com.zaxxer:HikariCP:5.1.0")
+
+    // Jackson para serialización JSON
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+
+    // Variables de entorno
+    implementation("io.github.cdimascio:dotenv-java:3.0.0")
+
+    // BCrypt para hashear contraseñas
+    implementation("org.mindrot:jbcrypt:0.4")
+
+    // Testing
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    mainClass = 'com.wheely.Main'
+}
+
+test {
+    useJUnitPlatform()
+}
